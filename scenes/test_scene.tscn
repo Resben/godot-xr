@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://do6e0vur35war"]
+
+[ext_resource type="PackedScene" uid="uid://bgtkqftkio3tr" path="res://scenes/rig.tscn" id="1_nhsxx"]
+[ext_resource type="PackedScene" uid="uid://kb2v0vyb58dm" path="res://assets/3D/temp/transistor_TV.glb" id="2_q1iwh"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="3_jie44"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l71ar"]
+
+[sub_resource type="Sky" id="Sky_7atnt"]
+sky_material = SubResource("ProceduralSkyMaterial_l71ar")
+
+[sub_resource type="Environment" id="Environment_y3uaf"]
+background_mode = 2
+sky = SubResource("Sky_7atnt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhpg3"]
+albedo_color = Color(0.2, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q1bob"]
+material = SubResource("StandardMaterial3D_bhpg3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k34tf"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jmo7"]
+size = Vector3(1.14319, 0.888184, 1.7113)
+
+[node name="TestScene" type="Node3D"]
+
+[node name="Rig" parent="." instance=ExtResource("1_nhsxx")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y3uaf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.739408, -2.9429e-08, 0.673258, -0.355316, 0.849396, 0.390227, -0.571862, -0.527757, 0.62805, 1.37194, 9.18556, -2.72075)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.232808, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(6.687, 0, 0, 0, 1, 0, 0, 0, 9.00453, 0, 0, 0)
+mesh = SubResource("PlaneMesh_q1bob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00161362, -0.247295, -0.0141678)
+shape = SubResource("BoxShape3D_k34tf")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+
+[node name="transistor_TV" parent="StaticBody3D2" instance=ExtResource("2_q1iwh")]
+transform = Transform3D(0.345647, 0, 0, 0, 0.345647, 0, 0, 0, 0.345647, 1.52907, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211125, 0.0559082, -0.461214)
+shape = SubResource("BoxShape3D_8jmo7")
+
+[node name="StartXR" parent="." instance=ExtResource("3_jie44")]
