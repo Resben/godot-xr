@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgtkqftkio3tr"]
+[gd_scene load_steps=6 format=3 uid="uid://bgtkqftkio3tr"]
 
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="2_8snrs"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_nlf0l"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_ugaop"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_8g3a2"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_56rbs"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/player/player_body.gd" id="7_ok12c"]
 
 [node name="Rig" type="Node3D"]
 
@@ -31,11 +30,6 @@ pose = &"aim"
 [node name="RightHand" parent="XROrigin3D/RightHand" instance=ExtResource("3_ugaop")]
 
 [node name="MovementDirect" parent="XROrigin3D/RightHand" instance=ExtResource("3_nlf0l")]
+strafe = true
 
-[node name="PlayerBody" type="CharacterBody3D" parent="XROrigin3D" groups=["player_body"] instance=ExtResource("6_56rbs")]
-process_priority = -100
-process_physics_priority = -100
-top_level = true
-collision_layer = 524288
-collision_mask = 1023
-script = ExtResource("7_ok12c")
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("6_56rbs")]

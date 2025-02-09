@@ -47,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00161362, -0.247295, -0.01
 shape = SubResource("BoxShape3D_k34tf")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15406, 0, 0)
 
 [node name="transistor_TV" parent="StaticBody3D2" instance=ExtResource("2_q1iwh")]
 transform = Transform3D(0.345647, 0, 0, 0, 0.345647, 0, 0, 0, 0.345647, 1.52907, 0, 0)
